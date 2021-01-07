@@ -1,0 +1,208 @@
+@charset "UTF-8";
+
+#day-title
+{
+	margin-top : 20px;
+	position : relative;
+}
+
+#backlink{
+	font-size: 15pt;
+	position : absolute;
+	top : -25px;
+	left : 5px;
+}
+
+#gradient-wrapper{
+	padding-top:20px;
+}
+
+.subtitle{
+	text-align : center;
+}
+
+#loader {
+    display : none;
+	width : 25px;
+	height : 25px;
+	margin : 0 5px 5px 5px;
+    border: 6px solid transparent;
+    border-color : orange transparent orange transparent;
+    border-radius: 50%;
+	animation: rotate 0.7s infinite linear;
+}
+
+#toptabs{
+	margin : auto;
+    display : flex;
+    justify-content: flex-start;
+	align-items: center;
+	flex-wrap : nowrap;
+	overflow: auto;
+}
+
+#toptabs .tab{
+	height: 30px;
+	display : flex;
+	justify-content : center;
+	align-content: center;
+	margin-right : 5px;
+	margin-bottom : 5px;
+	cursor: pointer;
+}
+#toptabs .tab.training{
+	width: 40px;
+	border-radius : 5px;
+}
+#toptabs .tab.planning{
+	width: 30px;
+	border-radius: 15px;
+}
+
+#toptabs .tab.selected{
+    height : 35px;
+    margin-bottom : 0px;
+	border-radius : 5px 5px 0 0;
+}
+#toptabs .tab.planning.selected{
+	border-radius: 15px 15px 0 0;
+}
+
+.tab-img{
+    width : 25px;
+    height : 25px;
+}
+#fill-div{
+	flex : 1;
+	min-width : 30px;
+}
+
+@media screen and (min-width : 800px){
+	#toptabs .tab{
+		height: 40px;
+	}
+	#toptabs .tab.training{
+		width: 70px;
+	}
+	#toptabs .tab.planning{
+		width : 40px;
+		border-radius: 20px;
+	}
+
+	#toptabs .tab.selected{
+		height : 45px;
+	}#toptabs .tab.planning.selected{
+		border-radius: 20px 20px 0 0;
+	}
+
+	.tab-img{
+		width : 30px;
+		height : 30px;
+		margin-top: 5px;
+	}
+} 
+
+#day-title{
+	display : flex;
+	justify-content : center;
+	align-items : center;
+}
+
+.change-day{
+	display : flex;
+	align-items: center;
+	justify-content: center;
+	border-radius : 20px;
+	transition : 0.2s;
+	margin : 5px;
+	font-size : 16pt;
+	line-height: 1em;
+	padding: 10px 14px;
+	overflow: visible;
+	cursor : pointer;
+}.change-day:hover{
+	/*color : rgb(255, 94, 94);*/
+	background-color : #555555;
+}
+
+img.title-img{
+    width : 30px;
+    height : 30px;
+}
+.align-right{
+	margin-left : 50px;
+}
+
+form{
+    position : relative;
+}
+
+#day_form{
+	padding : 2em;
+}
+
+
+.edit-actions{
+	display : flex;
+	justify-content: flex-end;
+	padding : 10px;
+	width : 100%;
+}
+
+.edit-actions input{
+	margin-right : 20px;
+}
+
+.edit-actions .info-box{
+	margin : 0 10px 0 10px;
+	padding : 5px 10px 5px 10px;
+	background-color : rgb(206, 206, 206);
+	border-radius : 10px;
+}
+
+.edit-actions .info-box i{
+	margin-right : 10px;
+}
+
+/* Form elements */
+.bordered{
+	border-top : 1px solid rgba(255, 255, 255, 0.5);
+}
+
+#form_content label {
+	margin-right : 10px;
+}
+#form_content #seance-hours,#form_content #distance,#form_content #uphill{
+	width : 50px;
+	text-align: right;
+}#form_content #distance,#form_content #uphill{ 
+	margin-left : 10px;
+}#form_content #seance-min{
+	width : 30px;
+}
+
+.load-infos{
+	padding : 20px 5px;
+	border-radius : 10px;
+	background-color: #333333;
+	text-align : center;
+}
+
+#vote-list{
+	list-style: none;
+}
+#vote-list li i{
+	margin-right : 10px;
+}
+
+#dayview-form{
+	position : relative;
+}
+
+#hr-graph{
+	text-align : center;
+	padding: 10px;
+	overflow : hidden;
+	display : flex;
+	justify-content: space-around;
+}

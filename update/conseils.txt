@@ -1,0 +1,13 @@
+TODO :
+	1 : Planning structure
+	2 : Planning groupes personnalisés
+	3 : Synchro entre les muscu et la charge du planning
+	4 : Visibilité sur cet outil de synchro
+	
+Autres :
+
+	Commentaires par jour et par semaine ?
+	Résumé des commentaires pour les admins
+	Statistiques sur la charge
+	Nom des personnes sur la page du carnet
+	Bonus : Liens vers loggator

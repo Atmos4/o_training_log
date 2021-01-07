@@ -1,0 +1,770 @@
+@media screen and (min-width: 1200px){
+	#bloc_page{
+		width : 1200px;
+		margin : auto;
+		position : relative;
+	}
+}
+
+@media screen and (max-width: 1200px){
+	#bloc_page{
+		width : 100%;
+		padding : 0 5px 0 5px;
+		margin : auto;
+		position : relative;
+	}
+}
+
+.toggle-planning{
+	margin : 5px;
+	font-size : 22px;
+	opacity : 0.5;
+	cursor : pointer;
+
+	-webkit-transition: font-size 0.3s, opacity 0.3s, color 0.3s; /* Safari */
+    -moz-transition: font-size 0.3s, opacity 0.3s, color 0.3s; /* Firefox */
+    transition: font-size 0.3s, opacity 0.3s, color 0.3s;
+}
+.toggle-planning:hover{
+	opacity : 1;
+}
+.toggle-planning.toggled{
+	font-size : inherit;
+	opacity : 1;
+}
+
+#year_bloc{
+	width : 100%;
+	font-size: 20pt;
+    margin : 0;
+    margin-top : -20px;
+}
+
+#loader {
+    display : none;
+	width : 30px;
+	height : 30px;
+	position : absolute;
+	top : 5px;
+	right : 20px;
+	border: 6px solid transparent;
+	border-color : orange transparent orange transparent;
+    border-radius: 50%;
+	animation: rotate 0.7s infinite linear;
+}
+
+#prev, #next{
+    cursor : pointer;
+    margin : 20px;
+    color : #ffffffaa;
+}
+
+#prev:hover, #next:hover{
+	color: #ffffff;
+}
+
+#addbutton{
+	float : right;
+	margin-top : 10px;
+	align-items : center;
+}
+
+#choose-time{
+	padding : 10px;
+}
+
+#choose-data{
+	padding : 10px;
+}
+
+
+#month_list{
+	display:flex;
+	list-style: none;
+	align-items: center;
+	align-content: center;
+    padding : 0px;
+	margin : 0px;
+	height : 50px;
+
+}
+
+#month_list li{
+    cursor: pointer;
+    flex : 1;
+	text-align : center;
+    padding-top : 10px;
+	padding-bottom : 10px;
+
+	-webkit-transition: font-size 0.2s, color 0.2s; /* Safari */
+    -moz-transition: font-size 0.2s, color 0.2s; /* Firefox */
+    transition: font-size 0.2s, color 0.2s;
+}
+
+
+#month_list li:hover{
+	font-size : 20pt;
+	font-weight: bold;
+    padding : 0;
+}
+
+#yearTitle{
+    color : #ffffffaa;
+}
+
+#yearTitle:hover{
+    color : #ffffff;
+	cursor : pointer;
+}
+
+.bold{
+    font-weight: bold;
+    font-size : 20pt;
+}
+
+#content {
+	position : relative;
+}
+
+table#calendar
+{
+	width: 100%;
+	margin : auto;
+	position : relative;
+}
+
+
+tr{
+	position : relative;
+}
+
+th{
+	background-color : #333333;
+}
+
+@media screen and (min-width : 1100px){
+	td.calcell{
+		background-color : #444444;
+		width: 150px;
+		height: 160px;
+		text-align : center;
+		position : relative;
+	}
+}
+
+
+@media screen and (min-width : 600px) and (max-width : 1100px){
+
+	td.calcell{
+		background-color : #444444;
+		width: 14%;
+		height : 80px;
+		position : relative;
+	}
+}
+
+@media screen and (max-width : 600px){
+
+	td.calcell{
+		background-color : #444444;
+		width: 13%;
+		height : 60px;
+		position : relative;
+		
+	}
+}
+
+.link{
+	cursor : pointer;
+}
+
+.outofmonth{
+	opacity : 0.4 ;
+
+	-webkit-transition: opacity 0.5s; /* Safari */
+    -moz-transition: opacity 0.5s; /* Firefox */
+    transition: opacity 0.5s;
+}
+
+td.calcell:hover{
+	opacity : 1;
+}
+
+@media screen and (min-width : 1000px){
+	span.date
+	{
+		position : absolute;
+		top : 0;
+		right : 0;
+		margin-top : -7px;
+		margin-right : 2px;
+		font-size : 12pt;
+
+	}
+}
+
+@media screen and (max-width : 1000px){
+	span.date{
+		position : absolute;
+		top : 0;
+		right : 0;
+		font-size : 9pt;
+		margin-top : -5px;
+	}
+}
+
+.resp-button{
+	display : none;
+}
+
+@media screen and (min-width : 600px) and (max-width : 1000px){
+	.resp-button{
+		display : block;
+		margin : auto;
+		font-size : 14pt;
+		width : 40px;
+		height : 40px;
+		text-align : center;
+		background-color : #333333;
+		cursor: pointer;
+		border-radius : 50%;
+	}
+}
+@media screen and (max-width : 600px){
+	.resp-button{
+		display : block;
+		margin : auto;
+		font-size : 12pt;
+		width : 30px;
+		height : 30px;
+		text-align : center;
+		background-color : #333333;
+		cursor: pointer;
+		border-radius : 50%;
+	}
+}
+
+
+@media screen and (max-width : 1000px){
+	.resp-link{
+		visibility: hidden;
+		border : solid 1px white;
+		position: absolute;
+		z-index: 1;
+		top : 50%;
+		left : 50%;
+		transform : translate(-50%, -50%);
+	}
+
+	.resp-link:hover,.resp-button:hover + .resp-link{
+		visibility : visible;
+	}
+}
+
+div.small_container
+{
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	align-content: center;
+	align-items: center;
+	width: 95%;
+	height: 135px;
+}
+
+div.normal_container
+{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 95%;
+	height: 135px;
+}
+
+@media screen and (max-width : 1000px){
+	div.small_container,div.normal_container
+	{
+		width: 120px;
+		height: 135px;
+		background-color : #444444;
+	}
+}
+
+.cell{
+	position : relative;
+	display:flex;
+	justify-content: space-between;
+	align-items: center;
+	border : solid 1px transparent;
+	border-radius: 5px;
+	margin: 3px;
+	background-color: #444444;
+}
+
+.normal_cell
+{
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.medium_cell
+{
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+
+.small_cell
+{
+	
+	width: 28px;
+	height: 28px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.tooltip
+{
+	visibility : hidden;
+	min-width: 60px;
+	line-height : 1.4em;
+    font-size : 10pt;
+	text-align: center;
+	border : solid 1px white;
+    border-radius: 6px;
+	color: #000000;
+	white-space: nowrap;
+	padding : 0 5px 0 5px;
+    position: absolute;
+    z-index: 1;
+	top: 100%;
+	left : 50%;
+	transform: translate(-50%, 8px);
+}
+.tooltip-up{
+	visibility : hidden;
+	text-align : center;
+    font-size : 10pt;
+	align-content: center;
+	border : solid 1px white;
+    border-radius: 6px;
+	color: #000000;
+	line-height: 1.4em;
+	white-space: nowrap;
+	padding : 0 5px 0 5px;
+    position: absolute;
+    z-index: 1;
+	top: 100%;
+	left : 50%;
+	transform: translate(-50%, 8px);
+    
+}
+
+.tooltip-up::after, .tooltip::after{
+	content: "";
+    position: absolute;
+    top: -16px;
+    left: 50%;
+    margin-left: -8px;
+    border-width: 8px;
+    border-style: solid;
+    border-color: transparent transparent white transparent;
+}
+.cell:hover .tooltip, .planning_cell:hover .tooltip
+{
+	visibility: visible ;
+}
+.cell:hover .tooltip-up
+{
+	visibility: visible ;
+}
+
+
+
+.icone
+{
+	width: 28px;
+	height: 28px;
+}
+.small_icone
+{
+	width: 24px;
+	height: 24px;
+}
+.icone.margin, .small_icone.margin{
+	margin:5px;
+}
+
+.bottomSum{
+	display : flex;
+	justify-content: space-around;
+	font-size : 10pt;
+	width : 100%;
+	height : 25px;
+	background : #333333;
+
+}
+
+
+.content
+{
+	font-size : 10pt;
+	line-height: 15pt;
+    color: #000;
+	text-align: center;
+}
+.totalcell{
+	text-align : center;
+}
+.endcell{
+	width : 50px;
+	position : relative;
+}
+.week-actions{
+	display : flex;
+	flex-direction: column-reverse;
+	justify-content: space-between;
+
+}
+.week-actions img{
+	width : 30px;
+	height : 30px;
+}
+
+@media screen and (min-width : 1000px){
+	.week-actions{
+		position : absolute;
+		height : 100%;
+		top : 0;
+		left : 0;
+	}
+}
+@media screen and (max-width : 1000px){
+	.week-actions{
+		position : absolute;
+		height : 100%;
+		top : 0;
+		left : 0;
+		font-size : 6pt;
+		line-height : 1em;
+
+	}.week-actions img{
+		width : 15px;
+		height : 15px;
+	}
+}
+
+.rotated{
+	transform : rotate(180deg);
+}
+
+tr.week-details-panel{
+	margin : 0;
+	padding : 0;
+}tr.week-details-panel td{
+	margin : 0;
+	padding : 0;
+}tr.week-details-panel td .week-panel-wrapper{
+	margin : 0;
+	padding : 0;
+}
+
+#save-comment{
+	margin-top : -5px;
+}
+.right{
+	float:right;
+}
+#save-comment:hover{
+	background-color : rgba(0, 128, 0, 0.5);
+}
+
+.total{
+	font-size : 12pt;
+	line-height: 15pt;
+	font-weight: 600;
+	color : #ffffff;
+	text-align: center;
+	position : relative;
+	cursor: default;
+}
+
+@media screen and (min-width : 600px) and (max-width : 1200px){
+	.total{
+		font-size : 10pt;
+		line-height : 12pt;
+		font-weight : 400;
+		margin : 0px;
+	}
+}
+@media screen and (max-width : 600px){
+	.total{
+		font-size : 8pt;
+		line-height : 12pt;
+		font-weight : 400;
+		margin : 0px;
+	}
+}
+
+
+
+/*Month cal*/
+
+.monthcell,.weekcell{
+	width : 100%;
+	background-color: #444444;
+	position : relative;
+	margin-bottom : 3px;
+	min-height:20px;
+}
+.weekcell .date{
+    opacity : 0;
+}.weekcell:hover .date{
+    opacity : 1;
+}
+
+.bytype-monthgraph{
+	display : flex;
+	cursor: pointer;
+	position : relative;
+}
+
+.bytype-monthgraph.large{
+	height: 30px;
+}
+.bytype-monthgraph.small{
+	height: 20px;
+}
+
+.typecolumn{
+	display : flex;
+	align-items: center;
+	color : black;
+	
+    -webkit-transition: border-color 0.3s; /* Safari */
+    -moz-transition: border-color 0.3s; /* Firefox */
+    transition: border-color 0.3s;
+}
+
+.typecolumn .column-label{
+	font-weight : 600;
+}
+
+.tooltipmonth
+{
+	display: flex;
+	visibility : hidden;
+	padding : 2px 7px 7px 7px;
+    font-size : 10pt;
+	text-align : center;
+	border : solid 2px #222222;
+	border-radius : 5px;
+    color: #000000;
+	white-space:nowrap;
+    position: absolute;
+    z-index: 1;
+	top: 100%;
+	left : 50%;
+	transform: translate(-50%, 8px);
+	margin-right : 50px;
+	opacity : 0;
+    
+    -webkit-transition: opacity 0.3s; /* Safari */
+    -moz-transition: opacity 0.3s; /* Firefox */
+    transition: opacity 0.3s;
+}
+
+.tooltipmonth::after{
+	content: "";
+    position: absolute;
+    top: -16px;
+    left: 50%;
+    margin-left: -8px;
+    border-width: 8px;
+    border-style: solid;
+    border-color: transparent transparent #222222 transparent;
+}
+
+.typecolumn:hover .tooltipmonth{
+	visibility: visible;
+	opacity : 1;
+}
+
+.totalmonth{
+	padding-left : 5px;
+	font-size : 10pt;
+}
+
+.monthcollapse-wrapper{
+    width : 100%;
+    position : relative;
+}
+
+.bydays-monthgraph{
+	width : 100%;
+	height : 200px;
+	display : flex;
+	border : solid 2px transparent;
+	position : relative;
+}
+
+.bydays-monthgraph .maxtime-indic{
+	position : absolute;
+	bottom : 80%;
+	left : 0;
+	margin-bottom : -2px;
+	width : 100%;
+	height : 0px;
+	border-top : solid 1px orange;
+}
+
+.bydays-monthgraph .maxtime-indic .maxtime-span{
+	position : absolute;
+	top : -25px;
+	left : 0;
+	color : orange;
+
+}
+
+.bydays-monthgraph .day-container{
+	position : relative;
+	background-color : transparent;
+	width : 2.8%;
+	height : 100%;
+	display : flex;
+	flex-direction : column;
+	justify-content: flex-end;
+	border-left : solid 2px transparent;
+	border-top : solid 2px transparent;
+	border-right : solid 2px transparent;
+}
+.bydays-monthgraph .day-container .date{
+	display : none;
+}
+.bydays-monthgraph .day-container:hover{
+	border-left : solid 2px white;
+	border-top : solid 2px white;
+	border-right : solid 2px white;
+}
+.bydays-monthgraph .day-container:hover .date{
+	position : absolute;
+	top : 0;
+	left : 0;
+	display : block;
+}
+.bydays-monthgraph .day-container .training-column{
+	width : 50%;
+	margin-left : 25%;
+	margin-right : 25%;
+	border-radius : 5px;
+	position : relative;
+}
+
+.bydays-monthgraph .day-container .load-indicator{
+	position : absolute;
+	left : 0;
+	bottom : 0;
+	width : 100%;
+	background-color : rgba(255, 17, 0, 0.336);
+}
+
+.tooltipgraph
+{
+	visibility : hidden;
+	padding-right : 10px;
+	line-height : 1.4em;
+    overflow: hidden;
+    font-size : 10pt;
+	align-content: center;
+    border-radius: 4px 4px 4px 0;
+    color: #000000;
+	white-space:nowrap;
+    position: absolute;
+    z-index: 1;
+	bottom: 100%;
+	left : 105%;
+	display : flex;
+	align-items : flex-start;
+	opacity : 0;
+
+	transition: opacity .3s ease-in-out;
+   -moz-transition: opacity .3s ease-in-out;
+   -webkit-transition: opacity .3s ease-in-out;
+}
+
+.bydays-monthgraph .day-container .training-column:hover .tooltipgraph{
+	visibility : visible;
+	opacity: 1;
+}
+
+.totalyear{
+	margin-top : 10px;
+	padding : 10px;
+	text-align: right;
+	font-size : 16pt;
+	font-weight : 600;
+}
+.totalyear span{
+	margin : 10px;
+}
+
+/*Planning*/
+.planning_content{
+	width : 100%;
+}
+
+.planning_cell{
+	border-radius : 50%;
+	display : flex;
+	align-content: center;
+	justify-content: space-around;
+	margin : 2px;
+	cursor: pointer;
+	position : relative;
+}
+
+.planning_cell .vote-mask{
+	position : absolute;
+	width : 100%;
+	height : 100%;
+	display : flex;
+	justify-content : center;
+	align-items : center;
+
+	border-radius : 50%;
+	background-color : rgba(0, 0, 0, 0.2);
+	color : rgba(255, 255, 255, 0.7);
+	text-shadow: 0px 0px 4px black;
+	font-size : 12pt;
+}
+
+.fullwidth{
+	width : 90%;
+	margin : auto;
+}
+
+.plus-button-day{
+	display : flex;
+	align-content: center;
+	justify-content: space-around;
+	margin : 2px;
+	cursor: pointer;
+	position : relative;
+	opacity : 0;
+	padding : 5px;
+	cursor: pointer;
+}
+.plus-button-day img{
+	width : 20px;
+	height : 20px;
+}td:hover .plus-button-day{
+	opacity : 0.3;
+}td:hover .plus-button-day:hover{opacity : 0.6;}
+
+
+
+
+
+

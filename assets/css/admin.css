@@ -1,0 +1,158 @@
+@media screen and (min-width : 1200px){
+    #bloc_page
+    {
+        width: 1200px;
+        margin: auto;
+    }
+}
+
+@media screen and (max-width : 1200px){
+    #bloc_page
+    {
+        width: 90%;
+        margin: auto;
+    }
+}
+
+table{
+    margin : auto;
+}
+h1{
+    background-color : none;
+    position : relative;
+}
+
+#adminbutton{
+    padding : 10px;
+    font-size : 14pt;
+    border-radius : 10px;
+    text-align: center;
+    text-decoration: none;
+    background-color : #555555;
+    cursor: pointer;
+    z-index : 1;
+}#adminbutton:hover{background-color : rgb(255, 94, 94);}
+
+#closeAdmin {
+    color: #aaaaaa;
+	position : absolute;
+	top : 0;
+    right : 0;
+    padding : 10px;
+    font-size: 28pt;
+    font-weight: bold;
+    line-height: 1em;
+    
+}
+
+#closeAdmin:hover,
+#closAdmin:focus {
+    color: #ffffff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+td{
+    background-color : #444444;
+    padding:10px;
+    line-height : 1em;
+    border : solid 1px transparent;
+    cursor : default;
+}
+td input.edit-user{
+    background-color : #5e5d5d;
+}th{
+    border : solid 1px transparent;
+    padding-right : 5px;
+    position : relative;
+    cursor: pointer;
+}th.sorted{
+    border : solid 1px white;
+    border-bottom : 0;
+}th.sorted::after{
+	content: "";
+    position: absolute;
+    top: 5px;
+    right : 5px;
+    border-width: 5px;
+    border-style: solid;
+}th.sorted.asc::after{
+    border-color: transparent transparent white transparent;
+}th.sorted.desc::after{
+    border-color: white transparent transparent transparent;
+}
+
+.field{
+    margin : auto;
+    margin-bottom : 10px;
+    display : flex;
+    justify-content: space-between;
+}
+
+@media screen and (min-width : 600px){
+    .field{
+        width : 60%;
+    }
+}
+
+@media screen and (max-width : 600px){
+    .field{
+        width : 100%;
+    }
+}
+
+tr.clickable td{
+    cursor: pointer;
+}
+
+tr:hover td{
+    background-color : #555555;
+}
+
+h3{
+    margin-left : 10px;
+}
+
+.centered{
+    width : 60%;
+    margin : auto;
+    margin-bottom : 10px;
+    display : flex;
+    justify-content: center;
+}
+
+.roundcheck > input{ /* HIDE RADIO */
+    visibility: hidden; /* Makes input not-clickable */
+    position: absolute; /* Remove input from document flow */
+}
+.roundcheck > input + span{ /* IMAGE STYLES */
+    display : inline-block;
+    cursor:pointer;
+    border:2px solid transparent;
+    border-radius : 50%;
+    width : 40px;
+    height : 40px;
+    text-align : center;
+    padding : 5px;
+    background-color : #333333;
+    margin : 10px;
+}.roundcheck span:hover{background-color : #3a3a3a;}
+.roundcheck > input:checked + span{ /* (RADIO CHECKED) IMAGE STYLES */
+    border:2px solid rgb(255, 94, 94);
+}
+
+.roundcheck span img{
+    width : 30px;
+    height : 30px;
+    margin-top : 5px;
+}
+
+#transferform{
+    display : flex;
+    justify-content: space-around;
+    padding : 0 10px 10px 10px;
+}
+
+td a:hover{
+    color : rgb(255, 94, 94);
+}

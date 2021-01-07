@@ -1,0 +1,91 @@
+@charset "UTF-8";
+@import url(font-awesome.min.css);
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300");
+
+#bloc_page{
+    margin : auto;
+    border-radius: 5px;
+    background-color : #444444;
+    padding : 20px;
+}
+
+
+.bloc_section
+{
+    display : flex;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+
+section{
+    margin: 10px 0 10px 0;
+}
+
+@media screen and (min-width : 1200px){
+    #bloc_page{width: 1100px;}
+    .bloc_section section{
+        width : 50%;
+    }
+}
+
+@media screen and (min-width : 900px) and (max-width : 1200px){
+    #bloc_page{width: 85%;}
+    .bloc_section section{
+        width : 50%;
+    }
+}
+
+@media screen and (max-width : 900px){
+    #bloc_page{width: 85%;}
+    .bloc_section{
+        padding : 5px;
+    }
+    .bloc_section section{
+        width : 100%;
+        margin : 0;
+    }
+}
+
+nav a img{
+    margin-top : 5px;
+}
+
+p input{
+    margin-left : 10px;
+}
+
+.strava{
+    text-align : center;
+}
+
+.hr-input{
+    text-align : right;
+}
+
+#strava_button{
+    background-color: #555555;
+    padding : 10px;
+    border-radius: 5px;
+    display : flex;
+    align-items: center;
+    justify-content: center;
+    transition : 0.5s;
+}
+#strava_button:hover{
+    background-color: #666666;
+}
+
+        
+        
+        
+        
+        
+        
+
+            
+
+
+
+
+
+

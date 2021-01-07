@@ -1,0 +1,180 @@
+ALTER DATABASE id5016060_carnet_ffco CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin;
+ALTER TABLE category_seance CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
+ALTER TABLE days CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
+ALTER TABLE runners CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
+ALTER TABLE state_day CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
+ALTER TABLE seances CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
+ALTER TABLE type_seance CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_bin;
+
+ALTER TABLE type_seance add images VARCHAR(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL;
+ALTER TABLE type_seance add color VARCHAR(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL;
+
+
+UPDATE type_seance set images = "images/orienteering.png" WHERE id = 1;
+UPDATE type_seance set type = "Musculation", images = "images/workout.png" WHERE id=2;
+UPDATE type_seance set images = "images/running.png" WHERE id = 3;
+UPDATE type_seance set images = "images/mtbike.png" WHERE id = 5;
+UPDATE type_seance set type = "Vélo de route", images ="images/bicycle.png" WHERE id = 6;
+UPDATE type_seance set type = "Ski de fond", images = "images/cc_ski.png" WHERE id = 8;
+UPDATE type_seance set images = "images/swimming.png" WHERE id = 9;
+UPDATE type_seance set images = "images/hiking.png" WHERE id = 10;
+UPDATE type_seance set images = "images/roller.png" WHERE id = 11;
+UPDATE type_seance set images = "images/workout.png" WHERE id = 12;
+UPDATE type_seance set images = "images/cc_ski.png" WHERE id = 13;
+UPDATE type_seance set images = "images/aquajog.png" WHERE id = 14;
+UPDATE type_seance set images = "images/eps.png" WHERE id = 15;
+UPDATE type_seance set images = "images/sportco.png" WHERE id = 16;
+UPDATE type_seance set images = "images/roller.png" WHERE id = 17;
+
+DELETE FROM type_seance WHERE id=4;
+DELETE FROM type_seance WHERE id=7;
+UPDATE seances SET type = 8 WHERE type = 7;
+DELETE FROM seances WHERE type = 2;
+DELETE FROM seances WHERE type = 4;
+
+DROP TABLE periods;
+DROP TABLE saisons;
+DROP TABLE runners_saisons;
+DROP TABLE planning_periods;
+drop table planning_data;
+drop table prefs;
+
+
+ALTER TABLE days DROP COLUMN period_id;
+ALTER TABLE days DROP COLUMN saison_id;
+ALTER TABLE seances ADD COLUMN date date;
+ALTER TABLE seances ADD runner_id SMALLINT(5) UNSIGNED NOT NULL AFTER day_id;
+
+UPDATE seances INNER JOIN days ON seances.day_id = days.id SET seances.date = days.date,seances.runner_id = days.runner_id;
+
+UPDATE type_seance set color = "#ade539" WHERE id = 1;
+UPDATE type_seance set color = "#f3cd06" WHERE id = 3;
+UPDATE type_seance set color = "#c49566" WHERE id = 5;
+UPDATE type_seance set color = "#ff9000" WHERE id = 6;
+UPDATE type_seance set color = "#6d81e8" WHERE id = 7;
+UPDATE type_seance set color = "#6d81e8" WHERE id = 8;
+UPDATE type_seance set color = "#33ccff" WHERE id = 9;
+UPDATE type_seance set color = "#00b300" WHERE id = 10;
+UPDATE type_seance set color = "#bbbbbb" WHERE id = 11;
+UPDATE type_seance set color = "#9d9d9d" WHERE id = 12;
+UPDATE type_seance set color = "#59ffee" WHERE id = 13;
+UPDATE type_seance set color = "#33ccff" WHERE id = 14;
+UPDATE type_seance set color = "#bbbbbb" WHERE id = 15;
+UPDATE type_seance set color = "#ff00ff" WHERE id = 16;
+UPDATE type_seance set color = "#bbbbbb" WHERE id = 17;
+
+ALTER TABLE `seances` CHANGE `txt` `txt` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL;
+
+ALTER TABLE `seances` ADD `charge` TINYINT(2) UNSIGNED NOT NULL AFTER `txt`;
+ALTER TABLE `days` CHANGE `doc` `state` TINYINT(1) NOT NULL DEFAULT '0';
+ALTER TABLE `days` DROP `kine`;
+ALTER TABLE days DROP intensite_id;
+ALTER TABLE days DROP postes_f;
+ALTER TABLE days DROP carte_id;
+
+ALTER TABLE type_day RENAME TO category_seance;
+ALTER TABLE `seances` CHANGE `cadre` `category` TINYINT(3) UNSIGNED NOT NULL DEFAULT '0';
+ALTER TABLE `category_seance` CHANGE `day_type` `id` TINYINT(3) UNSIGNED NOT NULL;
+ALTER TABLE `category_seance` CHANGE `day_tname` `name` VARCHAR(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL;
+ALTER TABLE `category_seance` ADD PRIMARY KEY(`id`);
+update category_seance set name="Entraînement" where id=0;
+update category_seance set name="Compétition" where id=1;
+update category_seance set name="Echauffement" where id=2;
+update category_seance set name="Récupération" where id=3;
+update category_seance set name="Sortie longue" where id=4;
+update category_seance set name="Intensité" where id=5;
+
+ALTER TABLE cadre_seance RENAME TO state_day;
+ALTER TABLE `state_day` CHANGE `cadre_id` `state_id` TINYINT(3) UNSIGNED NOT NULL;
+ALTER TABLE `state_day` CHANGE `cadre_nom` `state_name` VARCHAR(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL;
+UPDATE state_day SET state_name = "Normal" WHERE state_id=0;
+UPDATE state_day SET state_name = "Blessé" WHERE state_id=1;
+UPDATE state_day SET state_name = "Malade" WHERE state_id=2;
+UPDATE state_day SET state_name = "Voyage" WHERE state_id=3;
+UPDATE state_day SET state_name = "Epuisé" WHERE state_id=4;
+UPDATE state_day SET state_name = "Pas envie" WHERE state_id=5;
+
+
+ALTER TABLE `seances` ADD `deniv` SMALLINT(5) UNSIGNED NOT NULL AFTER `distance`;
+
+UPDATE seances 
+INNER JOIN (SELECT seances.day_id, MIN(seances.seance_id) as minID FROM seances GROUP BY seances.day_id) as s2 ON seances.seance_id = s2.minID 
+INNER JOIN days on seances.day_id = days.id 
+SET seances.deniv = days.deniv;
+
+alter table days drop deniv;
+
+ALTER TABLE `days` ADD `fatigue` TINYINT(2) NOT NULL AFTER `postes_r`;
+
+alter table seances drop day_id;
+
+ALTER TABLE `category_seance` ADD `color` VARCHAR(8) NOT NULL AFTER `name`;
+UPDATE category_seance SET color = "white" WHERE id=0;
+UPDATE category_seance SET color = "red" WHERE id=1;
+UPDATE category_seance SET color = "green" WHERE id=2;
+UPDATE category_seance SET color = "blue" WHERE id=3;
+UPDATE category_seance SET color = "yellow" WHERE id=4;
+UPDATE category_seance SET color = "orange" WHERE id=5;
+
+ALTER TABLE `runners` CHANGE `lastvisit` `lastvisit` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
+UPDATE runners SET lastvisit=NOW() WHERE id=174;
+ALTER TABLE runners ADD strava_token VARCHAR(50);
+
+ALTER TABLE `seances` ADD `strava_id` INT(16) NOT NULL AFTER `runner_id`;
+
+CREATE TABLE report(
+runner_id SMALL_INT(5) NOT NULL,
+email TINYTEXT NOT NULL,
+problem TEXT NOT NULL);
+
+ALTER TABLE `days` ADD `fcr` SMALLINT(4) NOT NULL AFTER `state`;
+ALTER TABLE `days` ADD `rest` TINYINT(2) NOT NULL AFTER `fcr`;
+ALTER TABLE days DROP dtype;
+
+CREATE TABLE structure
+(
+    id SMALLINT(5) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    nom TINYTEXT NOT NULL
+);
+
+CREATE TABLE planning
+(
+    id MEDIUMINT(8) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    structure_id SMALLINT(5) NOT NULL DEFAULT 0,
+    runner_id SMALLINT(5) NOT NULL,
+    date DATE NOT NULL,
+    type TINYINT(2) NOT NULL,
+    duree TIME NOT NULL,
+    details TEXT
+);
+
+ALTER TABLE seances DROP category;
+DROP TABLE category_seance;
+ALTER TABLE seances ADD title TINYTEXT NOT NULL;
+
+ALTER TABLE seances ADD zone1 SMALLINT(8) NOT NULL DEFAULT 0;
+ALTER TABLE seances ADD zone2 SMALLINT(8) NOT NULL DEFAULT 0;
+ALTER TABLE seances ADD zone3 SMALLINT(8) NOT NULL DEFAULT 0;
+ALTER TABLE seances ADD zone4 SMALLINT(8) NOT NULL DEFAULT 0;
+ALTER TABLE seances ADD zone5 SMALLINT(8) NOT NULL DEFAULT 0;
+
+ALTER TABLE `days` CHANGE `rest` `rest` TIME NOT NULL DEFAULT '00:00:00';
+
+CREATE TABLE structure
+(
+    id SMALLINT(5) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    nom TINYTEXT
+);
+
+ALTER TABLE `planning` ADD `titre` TINYTEXT NOT NULL AFTER `type`;
+ALTER TABLE `runners` ADD `structure_id` SMALLINT(5) NOT NULL AFTER `level` ;
+ALTER TABLE days DROP fcr;
+
+ALTER TABLE runners ADD fcmax SMALLINT(3) NOT NULL DEFAULT '200';
+ALTER TABLE runners ADD fcr SMALLINT(3) NOT NULL DEFAULT '50';
+
+ALTER TABLE seances ADD planning_id MEDIUMINT(8) NOT NULL DEFAULT '0' AFTER 'strava_id';
+
+
+
+
